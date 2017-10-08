@@ -34,10 +34,12 @@ const webhook = (req, res) => {
       }
     } else if (action === 'getVideo') {
       if (db[context.parameters.skill]) {
+        let videos = db[context.parameters.skill]['videos'];
+        let video = videos[Math.floor(Math.random() * videos.length)];
         followupEvent.name = 'video';
         followupEvent.data = {
-          platform: db[context.parameters.skill]['videos'][0].platform,
-          id: db[context.parameters.skill]['videos'][0].id
+          platform: video.platform,
+          id: video.id
         };
       } else {
         followupEvent.name = 'fallback';
