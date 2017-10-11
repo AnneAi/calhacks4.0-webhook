@@ -27,7 +27,8 @@ const webhook = (req, res) => {
         followupEvent.data = {
           wording: exercise.wording,
           choices: exercise.choices.join(','),
-          answer: exercise.answer
+          answer: exercise.answer,
+          explanation: exercise.explanation
         };
       } else {
         followupEvent.name = 'fallback';
