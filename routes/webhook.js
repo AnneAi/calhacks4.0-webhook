@@ -21,8 +21,8 @@ const webhook = (req, res) => {
       }
     } else if (action === 'getExercise') {
       if (db[context.parameters.skill]) {
-        let levelExercises = db[context.parameters.skill]['exercises'].filter( ex => ex.level === user.level);
-        let exercise = levelExercises[Math.floor(Math.random() * levelExercises.length)];
+        let exercises = db[context.parameters.skill]['exercises'];
+        let exercise = exercises[Math.floor(Math.random() * exercises.length)];
         followupEvent.name = 'exercise';
         followupEvent.data = {
           wording: exercise.wording,
